@@ -1,0 +1,24 @@
+.gradient-custom {
+    background: #fccb90;
+    background: -webkit-linear-gradient(
+        to bottom right,
+        rgba(252, 203, 144, 1),
+        rgba(213, 126, 235, 1)
+    );
+    background: linear-gradient(
+        to bottom right,
+        rgb(116 44 16),
+        rgb(26 108 108)
+    );
+}
+.mask-custom {
+    background: rgb(0 0 0 / 23%);
+    border-radius: 2em;
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    background-clip: padding-box;
+    box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
+}
+.message-body {
+    background-color: #efefef;
+}
