@@ -22,16 +22,19 @@
 .message-body {
     background-color: #efefef;
 }
-.list-unstyled li#current-user img {
-    /* position: absolute; */
-    right: 15.35%;
+#current-user {
+    direction: rtl;
 }
-.list-unstyled li#current-user .mask-custom {
-    margin-right: 71px;
+#current-user .mask-custom {
+    margin-right: 20px;
 }
 .row .list-unstyled .messages-body {
     overflow-y: scroll;
     max-height: 600px;
+}
+.alert-danger {
+    display: none;
+    margin-bottom: 50px;
 }
 .m-t-35 {
     margin-top: 35px;

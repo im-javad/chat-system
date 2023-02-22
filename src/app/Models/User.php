@@ -45,4 +45,11 @@ class User extends Authenticatable
     public function messages(){
         return $this->hasMany(Message::class);
     }
+
+    public function storageMessage(string $message){
+        Message::create([
+            'user_id' => $this->id,
+            'body' => $message
+        ]);
+    }
 }

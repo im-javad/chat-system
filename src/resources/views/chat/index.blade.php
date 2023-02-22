@@ -3,9 +3,11 @@
 @section('content')
 <section class="gradient-custom">
   <div class="container py-5">
-
     <div class="row">
-
+      <div class="alert alert-danger" role="alert">
+        Please type your message adn then send!
+      </div>
+      
       <div class="col-md-6 col-lg-5 col-xl-5 mb-4 mb-md-0">
         <h5 class="font-weight-bold mb-3 text-center text-white">Online Users</h5>
         <div class="card mask-custom">
@@ -87,17 +89,35 @@
 
           <li class="mb-3">
             <div class="form-outline form-white m-t-35" style="position: relative;">
-              <textarea class="form-control message-body" id="textAreaExample3" rows="4"></textarea>
-              <label class="form-label" for="textAreaExample3">Message</label>
+              <textarea class="form-control message-body" id="message-body" rows="4" placeholder="Type..."></textarea>
+              <label class="form-label" for="messageBody">Message</label>
             </div>
           </li>
-          <button type="button" class="btn btn-light btn-lg btn-rounded float-end">Send</button>
+          <button id="send-message" type="submit" class="btn btn-light btn-lg btn-rounded float-end">Send</button>
         </ul>
-
       </div>
-
     </div>
-
   </div>
+
+  <script>
+    $(document).ready(function () {
+      $('button#send-message').click(function(e){
+        e.preventDefault();
+        var message = $("#message-body").val();
+        $.ajax({
+          url: "{{ route('msg') }}",
+          type:'POST',
+          data: {_token: '{!! csrf_token() !!}' , message:message},
+          success: function(response) {
+            $('div.alert-danger').fadeOut(500);
+            $('.messages-body').append(response);
+          },
+          error: function() {
+            $('div.alert-danger').fadeIn(500);
+          }
+        });
+      });
+    });
+  </script>
 </section>
 @endsection
