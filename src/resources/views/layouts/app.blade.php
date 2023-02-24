@@ -12,7 +12,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> 
 </head>
 <body>
-    
+<nav>
+    <div class="container">
+        <a>Logout</a>
+        <a class="app">Satrap Chat</a>
+    </div>
+</nav>
 @yield('content')
 
 </html>

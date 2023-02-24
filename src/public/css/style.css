@@ -4,12 +4,7 @@ body {
     margin: 0;
     box-sizing: border-box;
 }
-a {
-    text-decoration: none;
-}
-/* ------------------------------------------------------------ */
-.gradient-custom {
-    background: #fccb90;
+body {
     background: -webkit-linear-gradient(
         to bottom right,
         rgba(252, 203, 144, 1),
@@ -21,6 +16,11 @@ a {
         rgb(26 108 108)
     );
 }
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+/* ------------------------------------------------------------ */
 .mask-custom {
     background: rgb(0 0 0 / 23%);
     border-radius: 2em;
@@ -63,4 +63,20 @@ a {
 }
 ::-webkit-scrollbar-thumb:hover {
     background-color: #a8bbbf;
+}
+nav .container {
+    display: flex;
+    position: relative;
+}
+nav .container a {
+    padding: 10px;
+    background: #2b7469;
+    color: black !important;
+    border-radius: 0 0px 10px 10px;
+    font-weight: bold;
+}
+nav .container .app {
+    position: absolute;
+    right: 0;
+    background-color: #a53807;
 }
