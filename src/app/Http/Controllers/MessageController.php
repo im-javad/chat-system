@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AjaxMessageRequest;
 use App\Models\Message;
-use Illuminate\Http\Request;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller{
@@ -16,8 +16,10 @@ class MessageController extends Controller{
         $allMessages = Message::all();
 
         $userMessage = Message::with('user')->where('user_id' , Auth::user()->id)->get();
+
+        $onlineUsers = User::where('last_seen' , '>' , now()->addMinutes(-2))->get();
         
-        return view('chat.index' , compact('allMessages' , 'userMessage'));
+        return view('chat.index' , compact('allMessages' , 'userMessage' , 'onlineUsers'));
     }
 
     public function storageMsg(AjaxMessageRequest $request){
