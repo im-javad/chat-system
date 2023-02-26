@@ -5,7 +5,7 @@
   <div class="container py-5">
     <div class="row">
       <div class="alert alert-danger" role="alert">
-        Please type your message adn then send!
+        Please type your message and then send!
       </div>
       <div class="col-md-6 col-lg-5 col-xl-5 mb-4 mb-md-0">
         <h5 class="font-weight-bold mb-3 text-center text-white">Online Users</h5>
@@ -40,7 +40,7 @@
             <li class="d-flex justify-content-between mb-4" id="{{ $userMessage->contains('user_id' , $message->user_id) ? 'current-user' : ''}}">
               <img src="https://th.bing.com/th/id/OIP.TSmyNYPpLJLvzpTeS4kF6wHaF2?pid=ImgDet&rs=1" alt="avatar"
                 class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
-              <div class="card mask-custom">
+              <div class="card mask-custom" style="position: relative">
                 <div class="card-header d-flex justify-content-between p-3"
                   style="border-bottom: 1px solid rgba(255,255,255,.3);">
                   <p class="fw-bold mb-0">{{ $message->user->name }}</p>
@@ -49,6 +49,11 @@
                 <div class="card-body">
                   <p class="mb-0">
                     {{ $message->body }}
+                      <form action="{{route('messages.destroy' , $message->id)}}" method="POST">
+                        @csrf
+                        @method('delete')
+                      <button style="position: absolute; top: 56px; right: -3px;" class="for-icons" type="submit"><i class="fa-regular fa-trash-can"></i></button>
+                    </form>
                   </p>
                 </div>
               </div>
@@ -72,7 +77,7 @@
         e.preventDefault();
         var message = $("#message-body").val();
         $.ajax({
-          url: "{{ route('msg') }}",
+          url: "{{ route('messages.storage') }}",
           type:'POST',
           data: {_token: '{!! csrf_token() !!}' , message:message},
           success: function(response) {

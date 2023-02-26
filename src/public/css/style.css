@@ -5,16 +5,12 @@ body {
     box-sizing: border-box;
 }
 body {
-    background: -webkit-linear-gradient(
-        to bottom right,
-        rgba(252, 203, 144, 1),
-        rgba(213, 126, 235, 1)
-    );
     background: linear-gradient(
         to bottom right,
         rgb(116 44 16),
         rgb(26 108 108)
     );
+    height: 100vh;
 }
 a {
     text-decoration: none;
@@ -48,6 +44,10 @@ a {
 }
 .m-t-35 {
     margin-top: 35px;
+}
+.for-icons {
+    background: none;
+    border: none;
 }
 ::-webkit-scrollbar {
     width: 20px;

@@ -32,4 +32,11 @@ class MessageController extends Controller{
 
         return "<li class='d-flex justify-content-between mb-4' id='current-user'> <img src='https://th.bing.com/th/id/OIP.TSmyNYPpLJLvzpTeS4kF6wHaF2?pid=ImgDet&rs=1' class='rounded-circle d-flex align-self-start me-3 shadow-1-strong' width='60'> <div class='card mask-custom'> <div class='card-header d-flex justify-content-between p-3' style='border-bottom: 1px solid rgba(255,255,255,.3);'> <p class=fw-bold mb-0> {$msg->user->name} </p> <p class='text-light small mb-0'><i class='far fa-clock'></i> 12 mins ago</p> </div> <div class='card-body'> <p class='mb-0'> {$msg->body} </p> </div> </div> </li>";
     }
+
+    public function destroy(Message $message){
+        $message->delete();
+
+        return back()
+                    ->with('simpleSuccessAlert' , 'Message deleted successfully');
+    }
 }
